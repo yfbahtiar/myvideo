@@ -163,7 +163,7 @@
                             <td><?= $b; ?></td>
                             <td><?= $result['judul']; ?></td>
                             <td>
-                                <span class="d-block my-2"><?= $result['keterangan']; ?></span>
+                                <span class="d-block mb-2"><?= $result['keterangan']; ?></span>
                                 <span class="badge badge-pill badge-info"><?= $result['kategori']; ?></span>
                                 <span class="badge badge-pill badge-secondary"><?= date('d M Y', $result['tanggal']); ?></span>
                             </td>
@@ -298,7 +298,7 @@
                         <tr>
                             <td><?= $b; ?></td>
                             <td><?= $result['judul']; ?></td>
-                            <td><span><?= $result['keterangan']; ?></span></td>
+                            <td><?= $result['keterangan']; ?></td>
                             <td><span class="badge badge-pill badge-info"><?= $result['kategori']; ?></span></td>
                             <td><span class=" d-block"><?= date('d M Y', $result['tanggal']); ?></span></td>
                             <td><span class="font-weigh-normal"><?= number_format($result['viewers']); ?> x ditonton</span></td>
