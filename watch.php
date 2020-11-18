@@ -96,11 +96,7 @@ if (!$disliked) {
                                             <?php if (isset($_SESSION['login'])) : ?>
                                                 <?php if ($nameUsername == $k['id_user'] || $_SESSION['role_id'] == 1 || $_SESSION['username'] == $q['id_user']) : ?>
                                                     <div class="d-flex justify-content-end">
-                                                        <a onclick="return confirm('Yakin mau hapus ini...?')" href="?page=watch&url=<?= $cari; ?>&delete-komen=<?php if (!$_SESSION['login']) {
-                                                                                                                                                                    echo $session;
-                                                                                                                                                                } else {
-                                                                                                                                                                    echo $k['id_user'];
-                                                                                                                                                                } ?>" class="badge badge-danger">Hapus</a>
+                                                        <a onclick="return confirm('Yakin mau hapus ini...?')" href="?page=watch&url=<?= $cari . '&delete-komen=' . $k['id'] . '&user=' . $k['id_user']; ?>" class="badge badge-danger">Hapus</a>
                                                     </div>
                                                 <?php endif; ?>
                                             <?php endif; ?>
@@ -140,8 +136,8 @@ if (!$disliked) {
                                                     </div>
                                                 </div>
                                                 <div class="modal-footer">
-                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                     <button type="submit" class="btn btn-primary" name="komen">Kirim</button>
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                                                 </div>
                                             </form>
                                         </div>
