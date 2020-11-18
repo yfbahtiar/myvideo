@@ -118,7 +118,7 @@ if (isset($_GET['delete-komen'])) {
         $id_userKomen = $_GET['delete-komen'];
         $url_videoDeleteKomen = $_GET['url'];
 
-        mysqli_query($conn, "DELETE FROM komentar WHERE id_user = '$id_userKomen' AND url_video = '$url_videoDeleteKomen'");
+        mysqli_query($conn, "DELETE FROM komentar WHERE id = '$id_userKomen' AND url_video = '$url_videoDeleteKomen'");
         $_SESSION['pesan'] = 'Komentar berhasil dihapus.';
         // di website nya pake js
         //echo "<script>window.location.href = 'login.php';</script>";
