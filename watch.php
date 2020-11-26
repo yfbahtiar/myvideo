@@ -79,31 +79,24 @@ if (!$disliked) {
                     <div class="card">
                         <div class="card-header">Komentar</div>
                         <div class="card-body">
-                            <div class="card">
-                                <?php if (mysqli_num_rows($komen) < 1) : ?>
-                                    <div class="card-body">
-                                        <h6 class="text-center p-1">Belum ada komentar</h6>
+                            <?php if (mysqli_num_rows($komen) < 1) : ?>
+                                <h6 class="text-center p-1">Belum ada komentar</h6>
+                            <?php else : ?>
+                                <?php while ($k = mysqli_fetch_assoc($komen)) : ?>
+                                    <div class="d-flex mb-2">
+                                        <span class="font-weight-bold d-block"><?= $k['id_user']; ?></span>
+                                        <small class="ml-2"><?= date('d M Y', $k['tanggal']); ?></small>
                                     </div>
-                                <?php else : ?>
-                                    <?php while ($k = mysqli_fetch_assoc($komen)) : ?>
-                                        <div class="card-body">
-                                            <div class="d-flex mb-2">
-                                                <span class="font-weight-bold d-block"><?= $k['id_user']; ?></span>
-                                                <small class="ml-2"><?= date('d M Y', $k['tanggal']); ?></small>
+                                    <?= $k['komentar']; ?>
+                                    <?php if (isset($_SESSION['login'])) : ?>
+                                        <?php if ($nameUsername == $k['id_user'] || $_SESSION['role_id'] == 1 || $_SESSION['username'] == $q['id_user']) : ?>
+                                            <div class="d-flex justify-content-end">
+                                                <a onclick="return confirm('Yakin mau hapus ini...?')" href="?page=watch&url=<?= $cari . '&delete-komen=' . $k['id'] . '&user=' . $k['id_user']; ?>" class="badge badge-danger">Hapus</a>
                                             </div>
-                                            </>
-                                            <?= $k['komentar']; ?>
-                                            <?php if (isset($_SESSION['login'])) : ?>
-                                                <?php if ($nameUsername == $k['id_user'] || $_SESSION['role_id'] == 1 || $_SESSION['username'] == $q['id_user']) : ?>
-                                                    <div class="d-flex justify-content-end">
-                                                        <a onclick="return confirm('Yakin mau hapus ini...?')" href="?page=watch&url=<?= $cari . '&delete-komen=' . $k['id'] . '&user=' . $k['id_user']; ?>" class="badge badge-danger">Hapus</a>
-                                                    </div>
-                                                <?php endif; ?>
-                                            <?php endif; ?>
-                                        </div>
-                                    <?php endwhile; ?>
-                                <?php endif; ?>
-                            </div>
+                                        <?php endif; ?>
+                                    <?php endif; ?>
+                                <?php endwhile; ?>
+                            <?php endif; ?>
                         </div>
                         <div class="card-footer text-center">
                             <?php if (!isset($_SESSION['login'])) : ?>
